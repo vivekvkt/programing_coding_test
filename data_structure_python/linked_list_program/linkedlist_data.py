@@ -34,6 +34,18 @@ class LikedListDemo:
             last = last.next
         last.next = new_node
 
+    def deleteNode(self, key):
+        temp = self.head
+        if (temp is not None):
+            if(temp.data ==key):
+                self.head = temp.data
+                temp = None
+                return
+
+        while(temp is not None):
+            
+
+
 
     def printList(self):
         temp = self.head
@@ -53,7 +65,8 @@ node.push(30)
 node.push(40)
 node.push(100)
 node.afterNode(node.head.next,505)
-node.afterNode(node.head.next,400)
+node.afterNode(node.head.next.next,400)
 node.appendNode(50)
+node.deleteNode(1)
 
 node.printList()

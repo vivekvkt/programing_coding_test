@@ -1,18 +1,18 @@
-class A:
-    def sum(self):
-        print("A")
+# class A:
+#     def sum(self):
+#         print("A")
 
 
-class B:
-    def sum(self):
-        print("B")
-class C(B,A):
-    pass
+# class B:
+#     def sum(self):
+#         print("B")
+# class C(B,A):
+#     pass
 
 
-o = C()
+# o = C()
 
-o.sum()
+# o.sum()
 
 
 # n =12345
@@ -37,7 +37,19 @@ o.sum()
 # what is linkedlist
 #what is binary tree
 
-    
+
+# x = ['ab','cd ']
+# for i in x:
+#     print(i)
+#     x.append(i.upper())
+
+# print(x)
+
+
+
+x = "abcdef"
+while i in x:
+    print(i)
 
 
 

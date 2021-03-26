@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+     <!-- form -->
+    <div class="container mt-2">
+      <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #007bff;">
+        <div>Add Patient</div>
+      </nav>
+
+
+       <div class="mt-2">
+        <form  action="{% url 'demoapp:add' %}"  method="post">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col">
+              
+              <input type="text" id="firstnameid" name="firstname" class="form-control" placeholder="First name" required>
+            </div>
+            <div class="col">
+              <input type="text" id="lastnameid" name="lastname" class="form-control" placeholder="Last name" required>
+            </div>
+          </div>
+  
+          <div class="row">
+              <div class="col">
+                  <label for="inputgender">Gender</label>
+                  <select id="inputgenderid" name="gender" class="form-control" required>
+                    <option disabled selected value="">Choose...</option>
+                    <option value="male">MALE</option>
+                    <option value="female">FEMALE</option>
+                  </select>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+              </div>
+  
+              <div class="col">
+                  <label for="inputdob">DOB</label>
+                <div class="input-group date" data-provide="datepicker">
+                  <input type="date" id="datedobid" name="dob" class="form-control" required>
+                  <div class="input-group-addon">
+                      <span class="glyphicon glyphicon-th"></span>
+                  </div>
+                  </div>
+  
+              </div>
+          </div>
+            <button type="submit" class="btn btn-primary mt-2" value="submit">Save</button>
+      </form>
+       </div>
+    </div>
+    {% endblock %}

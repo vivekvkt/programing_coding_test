@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class="container mt-4">
+        <div class="d-flex justify-content-end">
+            <a  href="{% url 'demoapp:add' %}" >
+                <i class="fa fa-user-plus"></i>
+            </a>
+        </div>
+       
+       
+          <table class="table mt-2" id ="usertable">
+            <thead class="table-primary44" style="background-color: #007bff;">
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Patient Name</th>
+                <th scope="col">Date Of Birth</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%  for item in data %}
+              <tr id="item-{{item.id}}">
+                <td>{{item.id}}</td>
+                <td>{{item.firstname}}</td>
+                <td>{{item.dob}}</td>
+                <td>
+                  <a  href="{% url 'demoapp:detail' item.id %}" >Views</a>
+                    <button type="button" data-object-id='{{item.id}}' class="btn btn-danger deletedata-id">Delete</button>
+                </td>
+              </tr>
+              
+              {% endfor %}
+            </tbody>
+        </table>
+      
+</div>
+  {% endblock %}
+
+
+
+  {% block scripts %}
+
+  <script>
+    //delete agent data
+    $(function(){
+     
+    $('.deletedata-id').on('click', function (e) {
+      e.preventDefault();
+      var token = '{{csrf_token}}';
+      let object_id = $(this).attr('data-object-id');
+      console.log('object_id',object_id);
+      $.ajax({
+            headers: { "X-CSRFToken": token },
+            url : '/dashboard/delete/'+object_id+'/',                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+            type : "POST" , 
+            data:{id:object_id},
+            dataType: 'json', 
+            success : function(res) {
+            console.log("sucess ") 
+            if (res.deleted){
+              //console.log(res.deleted)
+              $("#usertable #item-" + object_id).remove();
+            }
+            
+      
+              
+           } ,
+             
+            error : function(xhr,errmsg,err) {
+            alert("something")
+            }
+      });
+     
+      
+  });
+
+
+  
+});
+
+
+  </script>
+
+  {% endblock %}
+
+

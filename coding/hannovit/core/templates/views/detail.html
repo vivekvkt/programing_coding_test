@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+     <!-- form -->
+    <div class="container mt-2">
+      <nav class=" navbar-light bg-light2" style="    background-color: #007bff;">
+        <div  class="d-flex justify-content-end">
+
+        <a class="navbar-brand " href="{% url 'demoapp:edit' data.id%}">Edit</a>
+      </div>
+      </nav>
+      
+            <div class="row">
+              <div class="col-12 col-sm-6">
+               <div>
+                Name:                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+               </div>
+              <div>
+                DOb:
+              </div>
+              </div>
+              <div class="col-12 col-sm-6">
+               <div>
+                {{data.firstname}}
+               </div>
+               <div>
+                {{data.dob}}
+               </div>
+              </div>
+            </div>
+      
+    
+        
+    </div>
+    {% endblock %}
